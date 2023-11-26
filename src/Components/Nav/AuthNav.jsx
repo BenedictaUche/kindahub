@@ -1,18 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Logo } from '../../utils/Icons'
 
 const AuthNav = () => {
   return (
-    <>
-        <nav className='flex justify-between items-center'>
+    <div className='bg-slate-50'>
+        <nav className='flex justify-between items-center px-10 py-2'>
             <Logo />
-            <div>
-                <Link to='/about'>About</Link>
-                <Link to='/contactus'>Contact us</Link>
+            <div className='inline-flex gap-6 text-lg'>
+                <NavLink to='/about' activeClassName='active'>About</NavLink>
+                <NavLink to='/contactus' activeClassName='active'>Contact us</NavLink>
             </div>
         </nav>
-    </>
+    </div>
   )
 }
 

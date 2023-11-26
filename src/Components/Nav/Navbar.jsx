@@ -1,21 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Logo } from '../../utils/Icons'
 
 const Navbar = () => {
   return (
-    <>
-        <nav className='flex justify-between items-center'>
+    <div className='bg-slate-50'>
+        <nav className='flex justify-between items-center px-10 py-4'>
             <Logo />
-            <div>
-                <Link to='/home'>Home</Link>
-                <Link to='/help'>Help</Link>
-                <Link to='/reward'>Reward</Link>
-                <Link to='/profile'>Help</Link>
-                <Link to='/login'>Signout</Link>
+            <div className='inline-flex gap-6 text-lg'>
+                <NavLink activeClassName='active' to='/home'>Home</NavLink>
+                <NavLink activeClassName='active' to='/help'>Help</NavLink>
+                <NavLink activeClassName='active' to='/reward'>Reward</NavLink>
+                <NavLink activeClassName='active' to='/profile'>Profile</NavLink>
+                <NavLink activeClassName='active' to='/login'>Signout</NavLink>
             </div>
         </nav>
-    </>
+    </div>
   )
 }
 
