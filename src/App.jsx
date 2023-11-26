@@ -1,27 +1,41 @@
-import React from 'react'
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
-import Navbar from './Components/Nav/Navbar'
-import Home from './Pages/Home/Home'
-import Landing from './Pages/Landing/Landing'
-import About from './Pages/About/Aboutus'
-import Login from './Pages/Auth/Login'
-import Register from './Pages/Auth/Register'
+import React from 'react';
+import { Routes, Route, BrowserRouter as Router, useLocation } from 'react-router-dom';
+import Navbar from './Components/Nav/Navbar';
+import AuthNav from './Components/Nav/AuthNav';
+import Home from './Pages/Home/Home';
+import HomeDetails from './Pages/Home/HomeDetails';
+import Landing from './Pages/Landing/Landing';
+import About from './Pages/About/Aboutus';
+import Login from './Pages/Auth/Login';
+import Register from './Pages/Auth/Register';
 
 function App() {
   return (
-    <>
-      <Router>
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}
 
+function AppContent() {
+  const location = useLocation();
+
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+  const navComponent = isAuthPage ? <AuthNav /> : <Navbar />;
+
+  return (
+    <>
+      {navComponent}
       <Routes>
         <Route exact path='/' element={<Landing />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/home/:id' element={<HomeDetails />} />
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>
-      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

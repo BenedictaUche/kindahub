@@ -8,8 +8,11 @@ const Navbar = () => {
         <nav className='flex justify-between items-center'>
             <Logo />
             <div>
-                <Link to='/about'>About</Link>
-                <Link to='/contactus'>Contact us</Link>
+                <Link to='/home'>Home</Link>
+                <Link to='/help'>Help</Link>
+                <Link to='/reward'>Reward</Link>
+                <Link to='/profile'>Help</Link>
+                <Link to='/login'>Signout</Link>
             </div>
         </nav>
     </>

@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../../Components/Nav/Navbar";
 import LandingVectorImage from "../../assets/LandingVector.png";
 
 const Landing = () => {
   return (
     <div className="min-h-screen bg-gradient-to-l from-pink-300 via-red-200 to-orange-200 flex flex-col">
-      <Navbar />
       <div className="flex flex-wrap justify-center items-center mt-8">
         <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2">
           <img src={LandingVectorImage} alt="Landing Vector" className="w-full h-auto" />
