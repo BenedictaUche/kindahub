@@ -8,7 +8,9 @@ import Landing from './Pages/Landing/Landing';
 import About from './Pages/About/Aboutus';
 import Login from './Pages/Auth/Login';
 import Register from './Pages/Auth/Register';
+import Help from './Pages/Help/Help';
 import Reward from './Pages/Rewards/Reward';
+import Profile from './Pages/Profile/Profile';
 
 function App() {
   return (
@@ -34,7 +36,9 @@ function AppContent() {
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/help' element={<Help />} />
         <Route path='/reward' element={<Reward />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
     </>
   );

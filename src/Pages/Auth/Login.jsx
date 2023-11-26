@@ -1,9 +1,13 @@
-import {useState, useEffect} from 'react';
-import AuthVectorImage from '../../assets/AuthVector.png';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import auth from '../../firebase';
+import AuthVectorImage from '../../assets/AuthVector.png';
+
 
 const Login = () => {
   const [formData, setFormData] = useState({email: '', password: ''});
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
@@ -11,10 +15,16 @@ const Login = () => {
     setFormData({...formData, [e.target.name]: e.target.value});
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    navigate('/home');
+
+    try {
+      const { email, password } = formData;
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/home');
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
 
@@ -62,6 +72,7 @@ const Login = () => {
           </button>
           <Link to="/forgot-password" className="text-blue-500">Forgot Password?</Link>
           </div>
+          {error && <p className="text-red-500">{error}</p>}
         </form>
 
         <p className="mt-4">

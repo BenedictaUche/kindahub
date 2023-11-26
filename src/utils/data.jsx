@@ -6,6 +6,7 @@ import imgFour from '../assets/profile4.webp'
 export const helpData = [
     {
         id: 1,
+        name: 'John Doe',
         title: 'Need help with coding',
         description: 'Can someone help me with my javascript assignment?',
         fullDetails: ' I have a project due next week and I am struggling with some concepts. I need assistance in understanding callbacks and promises. I would really appreciate it if someone could help me out.',
@@ -19,6 +20,7 @@ export const helpData = [
     },
     {
         id: 2,
+        name: 'John Doe',
         title: 'Need help getting groceries',
         description: 'Can someone help me get groceries?',
         fullDetails: 'I am unable to go out due to the pandemic and I need some help getting groceries. I would really appreciate it if someone could help me out.',
@@ -32,6 +34,7 @@ export const helpData = [
     },
     {
         id: 3,
+        name: 'John Doe',
         title: 'Need help learning guitar',
         description: 'Can someone help me with learning how to play the guitar?',
         fullDetails: 'I have been trying to learn it for a while but I am unable to understand some concepts. I would really appreciate it if someone could help me out.',
@@ -45,6 +48,7 @@ export const helpData = [
     },
     {
         id: 4,
+        name: 'John Doe',
         title: 'Need help with cleaning my house',
         description: 'Can someone help me clean?',
         fullDetails: 'I am unable to go out due to the pandemic and I need some help cleaning my house. I would really appreciate it if someone could help me out.',
@@ -58,6 +62,7 @@ export const helpData = [
     },
     {
         id: 5,
+        name: 'John Doe',
         title: 'Need help shopping for groceries',
         description: 'Can someone help me with shopping for groceries?',
         fullDetails: 'I am unable to go out due to the pandemic and I need some help shopping for groceries. I would really appreciate it if someone could help me out.',
@@ -71,6 +76,7 @@ export const helpData = [
     },
     {
         id: 6,
+        name: 'John Doe',
         title: 'Need help with coding',
         description: 'Can someone help me with my javascript assignment?',
         fullDetails: ' I have a project due next week and I am struggling with some concepts. I need assistance in understanding callbacks and promises. I would really appreciate it if someone could help me out.',
@@ -84,6 +90,7 @@ export const helpData = [
     },
     {
         id: 7,
+        name: 'John Doe',
         title: 'Need help with coding',
         description: 'Can someone help me with my javascript assignment?',
         fullDetails: ' I have a project due next week and I am struggling with some concepts. I need assistance in understanding callbacks and promises. I would really appreciate it if someone could help me out.',
@@ -97,6 +104,7 @@ export const helpData = [
     },
     {
         id: 8,
+        name: 'John Doe',
         title: 'Need help with coding',
         description: 'Can someone help me with my javascript assignment?',
         fullDetails: ' I have a project due next week and I am struggling with some concepts. I need assistance in understanding callbacks and promises. I would really appreciate it if someone could help me out.',
@@ -110,6 +118,7 @@ export const helpData = [
 export const offerHelpData = [
     {
         id: 1,
+        name: 'John Doe',
         title: 'Can teach python',
         description: 'I can help someone with python over ther weekend',
         fullDetails: 'I can help someone with python over ther weekend. I have been working with python for 5 years and I am very comfortable with it. I would really appreciate it if someone could help me out.',
@@ -121,6 +130,7 @@ export const offerHelpData = [
     },
     {
         id: 2,
+        name: 'John Doe',
         title: 'Can help with gardening',
         description: 'I can help someone with gardening this weekend',
         fullDetails: 'I can help someone with gardening this weekend. I love gardening and I am very comfortable with it. I would really appreciate it if someone could help me out.',
@@ -132,6 +142,7 @@ export const offerHelpData = [
     },
     {
         id: 3,
+        name: 'John Doe',
         title: 'I can go out with your dog',
         description: 'I can help someone with walking their dog this weekend',
         fullDetails: 'I can help someone with walking their dog this weekend. I love dogs and I am very comfortable with it. I would really appreciate it if someone could help me out.',
@@ -143,6 +154,7 @@ export const offerHelpData = [
     },
     {
         id: 4,
+        name: 'John Doe',
         title: 'Can help with gardening',
         description: 'I can help someone with gardening this weekend',
         fullDetails: 'I can help someone with gardening this weekend. I love gardening and I am very comfortable with it. I would really appreciate it if someone could help me out.',
@@ -154,6 +166,7 @@ export const offerHelpData = [
     },
     {
         id: 5,
+        name: 'John Doe',
         title: 'Can help with gardening',
         description: 'I can help someone with gardening this weekend',
         fullDetails: 'I can help someone with gardening this weekend. I love gardening and I am very comfortable with it. I would really appreciate it if someone could help me out.',
@@ -165,6 +178,7 @@ export const offerHelpData = [
     },
     {
         id: 6,
+        name: 'John Doe',
         title: 'Can help with gardening',
         description: 'I can help someone with gardening this weekend',
         fullDetails: 'I can help someone with gardening this weekend. I love gardening and I am very comfortable with it. I would really appreciate it if someone could help me out.',
@@ -176,6 +190,7 @@ export const offerHelpData = [
     },
     {
         id: 7,
+        name: 'John Doe',
         title: 'Can help with gardening',
         description: 'I can help someone with gardening this weekend',
         fullDetails: 'I can help someone with gardening this weekend. I love gardening and I am very comfortable with it. I would really appreciate it if someone could help me out.',
@@ -187,6 +202,7 @@ export const offerHelpData = [
     },
     {
         id: 8,
+        name: 'John Doe',
         title: 'Can help with gardening',
         description: 'I can help someone with gardening this weekend',
         fullDetails: 'I can help someone with gardening this weekend. I love gardening and I am very comfortable with it. I would really appreciate it if someone could help me out.',

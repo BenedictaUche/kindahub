@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { helpData, offerHelpData } from '../../utils/data';
 import OfferModal from './OfferModal';
+import UserDetailsModal from './UserDetailsModal';
 
 const HomeDetails = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showUserDetailsModal, setShowUserDetailsModal] = useState(false);
 
   const { id } = useParams();
 
@@ -20,16 +22,23 @@ const HomeDetails = () => {
     setShowModal(true);
   };
 
+  const showUserDetailsModalHandler = () => {
+    setShowUserDetailsModal(true);
+  }
+
   return (
-    <div className="py-8 px-20 flex flex-col gap-24">
+    <div className="py-8 px-20 flex flex-col gap-24 bg-slate-50 h-screen">
       <div className="flex items-center gap-10">
+        <Link onClick={showUserDetailsModalHandler}>
         <img
           src={selectedItem.image}
           alt={selectedItem.title}
           className="rounded-full object-cover h-16 w-16"
         />
+        </Link>
         <h2 className="text-2xl font-medium mb-4 text-[40px] font-['Inter']">{selectedItem.title}</h2>
       </div>
+      {showUserDetailsModal && <UserDetailsModal user={selectedItem} onClose={() => setShowUserDetailsModal(false)} />}
       <div className='text-stone-500 text-[20px] font-medium'>
         <p className='mb-10'>{selectedItem.title}</p>
         <p className="">{selectedItem.fullDetails}</p>
