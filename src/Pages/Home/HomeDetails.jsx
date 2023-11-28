@@ -1,22 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { helpData, offerHelpData } from '../../utils/data';
+import { ref, onValue } from 'firebase/database';
+import database from '../../firebase';
+// import { helpData, offerHelpData } from '../../utils/data';
 import OfferModal from './OfferModal';
 import UserDetailsModal from './UserDetailsModal';
 
 const HomeDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const [showUserDetailsModal, setShowUserDetailsModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const { id } = useParams();
 
-  const selectedItem =
-    helpData.find(item => item.id === parseInt(id)) ||
-    offerHelpData.find(item => item.id === parseInt(id));
+  // const selectedItem =
+  //   helpData.find(item => item.id === parseInt(id)) ||
+  //   offerHelpData.find(item => item.id === parseInt(id));
 
-  if (!selectedItem) {
-    return <div>Item not found</div>;
-  }
+  // if (!selectedItem) {
+  //   return <div>Item not found</div>;
+  // }
 
   const showModalHandler = () => {
     setShowModal(true);
@@ -24,6 +27,39 @@ const HomeDetails = () => {
 
   const showUserDetailsModalHandler = () => {
     setShowUserDetailsModal(true);
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const helpRef = ref(database, 'help');
+      const offerHelpRef = ref(database, 'offerHelp');
+
+      const fetchDataFromRef = (dataRef) => {
+        onValue(dataRef, (snapshot) => {
+          const data = snapshot.val();
+          console.log(data);
+          if (data) {
+            const dataArray = Object.entries(data).map(([key, value]) => ({ id: key, ...value }));
+            const selectedItemFromData = dataArray.find((item) => item.id === parseInt(id));
+            if (selectedItemFromData) {
+              setSelectedItem(selectedItemFromData);
+            } else {
+              console.log('Item not found');
+            }
+          }
+        });
+      };
+
+      fetchDataFromRef(helpRef);
+      fetchDataFromRef(offerHelpRef);
+    };
+
+    fetchData();
+  }, [id]);
+
+
+  if (!selectedItem) {
+    return <div>Loading...</div>;
   }
 
   return (

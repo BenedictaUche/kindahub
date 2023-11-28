@@ -11,7 +11,7 @@ const Help = () => {
     description: '',
     email: '',
     location: '',
-    offeringDetails: '',
+    fullDetails: '',
   });
 
   const [seekHelpFormData, setSeekHelpFormData] = useState({
@@ -21,7 +21,7 @@ const Help = () => {
     description: '',
     email: '',
     location: '',
-    seekingDetails: '',
+    fullDetails: '',
   });
 
 
@@ -151,7 +151,7 @@ const Help = () => {
                 id="offeringDetails"
                 rows="4"
                 onChange={handleOfferHelpChange}
-                value={offerHelpFormData.offeringDetails}
+                value={offerHelpFormData.fullDetails}
                 className="mt-1 p-2 w-full border-b-2 focus:outline-none focus:border-pink-400"
               ></textarea>
             </div>
@@ -250,7 +250,7 @@ const Help = () => {
                 id="seekingDetails"
                 rows="4"
                 onChange={handleSeekHelpChange}
-                value={seekHelpFormData.seekingDetails}
+                value={seekHelpFormData.fullDetails}
                 className="mt-1 p-2 w-full border-b-2 focus:outline-none focus:border-pink-400"
               ></textarea>
             </div>
