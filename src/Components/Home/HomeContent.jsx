@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ref, onValue } from "firebase/database";
-import database from "../../firebase";
+import { database } from "../../firebase";
 import ReactPaginate from "react-paginate";
 
 const ITEMS_PER_PAGE = 2;

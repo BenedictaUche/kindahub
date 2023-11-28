@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
-import database from '../../firebase';
+import { database } from '../../firebase';
 // import { helpData, offerHelpData } from '../../utils/data';
 import OfferModal from './OfferModal';
 import UserDetailsModal from './UserDetailsModal';

@@ -3,7 +3,7 @@ import { updateProfile } from 'firebase/auth';
 import AuthVectorImage from '../../assets/AuthVector.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import auth from '../../firebase';
+import { auth } from '../../firebase';
 
 const Register = () => {
   const [formData, setFormData] = useState({

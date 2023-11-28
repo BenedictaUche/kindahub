@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ref, push } from 'firebase/database';
-import database from '../../firebase.jsx'
+import { database } from '../../firebase.jsx'
 import { toast } from 'react-toastify';
 
 const Help = () => {
