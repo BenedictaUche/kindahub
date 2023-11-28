@@ -64,9 +64,9 @@ const Help = () => {
       <div className="container mx-auto">
         <h2 className="text-3xl font-extrabold text-pink-400 mb-8">How Can We Help You?</h2>
 
-       <div className='flex justify-center gap-14'>
+       <div className='flex flex-col md:flex-row  justify-center gap-14'>
         {/* Offer Help Form */}
-        <div className="mb-12">
+        <div className="mb-12 md:w-1/2 px-14 md:px-4">
           <h3 className="text-xl font-bold mb-4">Offer Help</h3>
           <form onSubmit={handleOfferHelpSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -166,7 +166,7 @@ const Help = () => {
         </div>
 
         {/* Seek Help Form */}
-        <div>
+        <div className='md:w-1/2 px-14 md:px-4'>
           <h3 className="text-xl font-bold mb-4">Seek Help</h3>
           <form onSubmit={handleSeekHelpSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
