@@ -1,28 +1,54 @@
 import React, { useState } from 'react';
+import { ref, push } from 'firebase/database';
+import database from '../../firebase.jsx'
+import { toast } from 'react-toastify';
 
 const Help = () => {
   const [offerHelpFormData, setOfferHelpFormData] = useState({
+    type: 'offerHelp',
     fullName: '',
+    title: '',
+    description: '',
     email: '',
     location: '',
     offeringDetails: '',
   });
 
   const [seekHelpFormData, setSeekHelpFormData] = useState({
+    type: 'seekHelp',
     fullName: '',
+    title: '',
+    description: '',
     email: '',
     location: '',
     seekingDetails: '',
   });
 
+
   const handleOfferHelpSubmit = (e) => {
     e.preventDefault();
-    console.log('Offer Help Form Submitted:', offerHelpFormData);
+    push(ref(database, 'offerHelp'), offerHelpFormData)
+      .then(() => {
+        toast.success('Offer Help Form Submitted Successfully'); // Show success notification
+        console.log('Offer Help Form Submitted:', offerHelpFormData);
+      })
+      .catch((error) => {
+        console.error('Error submitting form:', error);
+        toast.error('Error submitting offer help form'); // Show error notification
+      });
   };
 
   const handleSeekHelpSubmit = (e) => {
     e.preventDefault();
-    console.log('Seek Help Form Submitted:', seekHelpFormData);
+    push(ref(database, 'seekHelp'), seekHelpFormData)
+      .then(() => {
+        toast.success('Seek Help Form Submitted Successfully'); // Show success notification
+        console.log('Seek Help Form Submitted:', seekHelpFormData);
+      })
+      .catch((error) => {
+        console.error('Error submitting form:', error);
+        toast.error('Error submitting seek help form'); // Show error notification
+      });
   };
 
   const handleOfferHelpChange = (e) => {
@@ -73,6 +99,7 @@ const Help = () => {
               </div>
             </div>
 
+
             <div className="mt-4">
               <label htmlFor="location" className="block text-sm font-medium text-gray-600">
                 Location
@@ -85,6 +112,34 @@ const Help = () => {
                 value={offerHelpFormData.location}
                 className="mt-1 p-2 w-full border-b-2 focus:outline-none focus:border-pink-400"
               />
+            </div>
+
+            <div className="mt-4">
+              <label htmlFor="title" className="block text-sm font-medium text-gray-600">
+                Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                onChange={handleOfferHelpChange}
+                value={offerHelpFormData.title}
+                className="mt-1 p-2 w-full border-b-2 focus:outline-none focus:border-pink-400"
+              />
+            </div>
+
+            <div className="mt-4">
+              <label htmlFor="description" className="block text-sm font-medium text-gray-600">
+                Short description
+              </label>
+              <textarea
+                name="description"
+                id="description"
+                rows="4"
+                onChange={handleOfferHelpChange}
+                value={offerHelpFormData.description}
+                className="mt-1 p-2 w-full border-b-2 focus:outline-none focus:border-pink-400"
+              ></textarea>
             </div>
 
             <div className="mt-4">
@@ -152,21 +207,49 @@ const Help = () => {
                 type="text"
                 name="location"
                 id="location"
-                onChange={handleOfferHelpChange}
+                onChange={handleSeekHelpChange}
                 value={seekHelpFormData.location}
                 className="mt-1 p-2 w-full border-b-2 focus:outline-none focus:border-pink-400"
               />
             </div>
 
             <div className="mt-4">
-              <label htmlFor="offeringDetails" className="block text-sm font-medium text-gray-600">
-                Details of Offering Help
+              <label htmlFor="title" className="block text-sm font-medium text-gray-600">
+                Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                onChange={handleSeekHelpChange}
+                value={seekHelpFormData.title}
+                className="mt-1 p-2 w-full border-b-2 focus:outline-none focus:border-pink-400"
+              />
+            </div>
+
+            <div className="mt-4">
+              <label htmlFor="description" className="block text-sm font-medium text-gray-600">
+                Short description
               </label>
               <textarea
-                name="offeringDetails"
-                id="offeringDetails"
+                name="description"
+                id="description"
                 rows="4"
-                onChange={handleOfferHelpChange}
+                onChange={handleSeekHelpChange}
+                value={seekHelpFormData.description}
+                className="mt-1 p-2 w-full border-b-2 focus:outline-none focus:border-pink-400"
+              ></textarea>
+            </div>
+
+            <div className="mt-4">
+              <label htmlFor="seekingDetails" className="block text-sm font-medium text-gray-600">
+                Details of Seeking Help
+              </label>
+              <textarea
+                name="seekingDetails"
+                id="seekingDetails"
+                rows="4"
+                onChange={handleSeekHelpChange}
                 value={seekHelpFormData.seekingDetails}
                 className="mt-1 p-2 w-full border-b-2 focus:outline-none focus:border-pink-400"
               ></textarea>

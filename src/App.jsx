@@ -11,6 +11,8 @@ import Register from './Pages/Auth/Register';
 import Help from './Pages/Help/Help';
 import Reward from './Pages/Rewards/Reward';
 import Profile from './Pages/Profile/Profile';
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -23,7 +25,7 @@ function App() {
 function AppContent() {
   const location = useLocation();
 
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/';
   const navComponent = isAuthPage ? <AuthNav /> : <Navbar />;
 
   return (
@@ -40,6 +42,7 @@ function AppContent() {
         <Route path='/reward' element={<Reward />} />
         <Route path='/profile' element={<Profile />} />
       </Routes>
+      <ToastContainer />
     </>
   );
 }

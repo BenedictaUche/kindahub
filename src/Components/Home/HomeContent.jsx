@@ -1,18 +1,46 @@
-import React, { useState } from "react";
-import ReactPaginate from "react-paginate";
-import { helpData, offerHelpData } from "../../utils/data";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ref, onValue } from "firebase/database";
+import  database  from "../../firebase";
+import ReactPaginate from "react-paginate";
 
 const ITEMS_PER_PAGE = 2;
 
 const HomeContent = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [offerHelpData, setOfferHelpData] = useState([]);
+  const [seekHelpData, setSeekHelpData] = useState([]);
 
-  const helpDataSlice = helpData.slice(
+  useEffect(() => {
+    // Fetch data from Firebase for offerHelp
+    const offerHelpRef = ref(database, "offerHelp");
+    onValue(offerHelpRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const offerHelpArray = Object.values(data);
+        setOfferHelpData(offerHelpArray);
+      }
+      console.log(data);
+    });
+
+    // Fetch data from Firebase for seekHelp
+    const seekHelpRef = ref(database, "seekHelp");
+    onValue(seekHelpRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const seekHelpArray = Object.values(data);
+        setSeekHelpData(seekHelpArray);
+      }
+      console.log(data);
+    });
+  }, []);
+
+  const offerHelpDataSlice = offerHelpData.slice(
     currentPage * ITEMS_PER_PAGE,
     (currentPage + 1) * ITEMS_PER_PAGE
   );
-  const offerHelpDataSlice = offerHelpData.slice(
+
+  const seekHelpDataSlice = seekHelpData.slice(
     currentPage * ITEMS_PER_PAGE,
     (currentPage + 1) * ITEMS_PER_PAGE
   );
@@ -27,8 +55,8 @@ const HomeContent = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">Need help</h2>
           <div className="grid gap-4">
-            {helpDataSlice.map((item, index) => (
-              <div key={index} className="card bg-white rounded-lg shadow-md p-6">
+            {seekHelpDataSlice.map((item, index) => (
+              <div key={index} className="card bg-white rounded-lg shadow-md p-6 w-[500px]">
                 <h5 className="text-xl font-bold mb-2">{item.title}</h5>
                 <p className="text-gray-600">{item.description}</p>
                 <Link to={`/home/${item.id}`}>
@@ -44,7 +72,7 @@ const HomeContent = () => {
           <h2 className="text-2xl font-bold mb-4">Offer help</h2>
           <div className="grid gap-4">
             {offerHelpDataSlice.map((item, index) => (
-              <div key={index} className="card bg-white rounded-lg shadow-md p-6">
+              <div key={index} className="card bg-white rounded-lg shadow-md p-6 w-[500px]">
                 <h5 className="text-xl font-bold mb-2">{item.title}</h5>
                 <p className="text-gray-600">{item.description}</p>
                 <Link to={`/home/${item.id}`}>
@@ -61,7 +89,7 @@ const HomeContent = () => {
         previousLabel={"previous"}
         nextLabel={"next"}
         breakLabel={"..."}
-        pageCount={Math.ceil(helpData.length / ITEMS_PER_PAGE)}
+        pageCount={Math.ceil(offerHelpData.length / ITEMS_PER_PAGE)}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handlePageChange}
